@@ -1,22 +1,22 @@
-# Sistema de GestiÛn de Productos Descontinuados
+# Sistema de Gesti√≥n de Productos Descontinuados
 
-Sistema completo (Frontend + Backend) para gestionar productos descontinuados mediante escaneo de cÛdigos de barras.
+Sistema completo (Frontend + Backend) para gestionar productos descontinuados mediante escaneo de c√≥digos de barras.
 
-## CaracterÌsticas
+## Caracter√≠sticas
 
-- B˙squeda de productos por cÛdigo de barras
-- Soporte para lectores de cÛdigo de barras USB
-- DescontinuaciÛn de productos con transacciones
-- ValidaciÛn de duplicados y estados
-- API REST con documentaciÛn Swagger
-- VerificaciÛn de conexiÛn autom·tica
+- B√∫squeda de productos por c√≥digo de barras
+- Soporte para lectores de c√≥digo de barras USB
+- Descontinuaci√≥n de productos con transacciones
+- Validaci√≥n de duplicados y estados
+- API REST con documentaci√≥n Swagger
+- Verificaci√≥n de conexi√≥n autom√°tica
 
 ## Requisitos
 
 - Windows 10 o superior
 - .NET 8.0 SDK
 - MySQL Server 8.0+
-- Lector de cÛdigo de barras USB (opcional)
+- Lector de c√≥digo de barras USB (opcional)
 
 ## Estructura del Proyecto
 
@@ -33,51 +33,11 @@ ProductosDescontinuados/
     ??? Services/
 ```
 
-## InstalaciÛn
+## Instalaci√≥n
 
 ### 1. Base de Datos MySQL
 
-Ejecuta el siguiente script:
-
-```sql
-CREATE DATABASE IF NOT EXISTS tienda_db;
-USE tienda_db;
-
-CREATE TABLE IF NOT EXISTS productos (
-    id_producto INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_barras VARCHAR(50) NOT NULL UNIQUE, 
-    nombre VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(255),
-    precio_venta DECIMAL(10, 2) NOT NULL,
-    precio_compra DECIMAL(10, 2),
-    existencia INT NOT NULL DEFAULT 0,
-    descontinuado BOOLEAN NOT NULL DEFAULT FALSE,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-DELIMITER $$
-CREATE PROCEDURE sp_consultar_productos(IN p_codigo_barras VARCHAR(50))
-BEGIN
-    SELECT 
-        id_producto, 
-        codigo_barras, 
-        nombre, 
-        descripcion, 
-        precio_venta, 
-        existencia
-    FROM 
-        productos 
-    WHERE 
-        codigo_barras = p_codigo_barras 
-        AND descontinuado = FALSE;
-END$$
-DELIMITER ;
-
-INSERT INTO productos (codigo_barras, nombre, descripcion, precio_venta, precio_compra, existencia) VALUES
-('7501234567890', 'Coca Cola 600ml', 'Refresco de cola', 15.50, 10.00, 100),
-('7501234567891', 'Sabritas Original 45g', 'Papas fritas sabor original', 12.00, 8.00, 150),
-('7501234567892', 'Agua Bonafont 1L', 'Agua purificada', 10.00, 6.50, 200);
-```
+Ejecuta el script del repositorio
 
 ### 2. Backend API
 
@@ -87,7 +47,7 @@ dotnet restore
 dotnet run
 ```
 
-La API estar· disponible en:
+La API estar√° disponible en:
 - HTTP: `http://localhost:5053`
 - Swagger: `http://localhost:5053/swagger`
 
@@ -99,7 +59,7 @@ dotnet restore
 dotnet run
 ```
 
-## ConfiguraciÛn
+## Configuraci√≥n
 
 ### Backend - Connection String
 
@@ -115,7 +75,7 @@ Edita `descontinuarProductosBackend/appsettings.json`:
 
 ### Frontend - URL de la API
 
-La URL se configura autom·ticamente en `Form1.cs`:
+La URL se configura autom√°ticamente en `Form1.cs`:
 ```csharp
 _apiService = new ApiService("http://localhost:5053");
 ```
@@ -124,17 +84,17 @@ _apiService = new ApiService("http://localhost:5053");
 
 ### Agregar Productos a la Lista
 
-1. Coloca el cursor en el campo "CÛdigo de Barras"
-2. Escanea el producto con el lector USB o ingresa el cÛdigo manualmente
+1. Coloca el cursor en el campo "C√≥digo de Barras"
+2. Escanea el producto con el lector USB o ingresa el c√≥digo manualmente
 3. Presiona `Enter` o haz clic en "Buscar"
-4. El producto se agregar· a la lista si existe y no est· descontinuado
+4. El producto se agregar√° a la lista si existe y no est√° descontinuado
 
 ### Descontinuar Productos
 
 1. Selecciona un producto de la lista (clic en la fila)
-2. Haz clic en el botÛn "DESCONTINUAR"
-3. Confirma la acciÛn en el di·logo
-4. El producto se marcar· como descontinuado en la base de datos
+2. Haz clic en el bot√≥n "DESCONTINUAR"
+3. Confirma la acci√≥n en el di√°logo
+4. El producto se marcar√° como descontinuado en la base de datos
 
 ## API Endpoints
 
@@ -190,14 +150,14 @@ Response 200:
 
 ## Validaciones
 
-El sistema valida autom·ticamente:
-- CÛdigo de barras no vacÌo
+El sistema valida autom√°ticamente:
+- C√≥digo de barras no vac√≠o
 - Producto existe en la base de datos
-- Producto no est· descontinuado
-- Producto no est· duplicado en la lista actual
-- ConexiÛn con el servidor activa
+- Producto no est√° descontinuado
+- Producto no est√° duplicado en la lista actual
+- Conexi√≥n con el servidor activa
 
-## TecnologÌas
+## Tecnolog√≠as
 
 ### Frontend
 - .NET 8.0
@@ -211,6 +171,3 @@ El sistema valida autom·ticamente:
 - Swagger/OpenAPI
 - MySql.Data
 
-## Licencia
-
-MIT License
