@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductosDescontinuados", "Frontend\ProductosDescontinuados.csproj", "{DC1360F3-9A94-5334-9D00-4CDF5D18C196}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "descontinuarProductosBackend", "Backend\descontinuarProductosBackend.csproj", "{CD7F558A-C29E-8DB6-FE31-E8E2EA52E825}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC1360F3-9A94-5334-9D00-4CDF5D18C196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1360F3-9A94-5334-9D00-4CDF5D18C196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1360F3-9A94-5334-9D00-4CDF5D18C196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1360F3-9A94-5334-9D00-4CDF5D18C196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7F558A-C29E-8DB6-FE31-E8E2EA52E825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7F558A-C29E-8DB6-FE31-E8E2EA52E825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7F558A-C29E-8DB6-FE31-E8E2EA52E825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7F558A-C29E-8DB6-FE31-E8E2EA52E825}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7751CBF-949E-414D-80CF-C41389E615E0}
+	EndGlobalSection
+EndGlobal

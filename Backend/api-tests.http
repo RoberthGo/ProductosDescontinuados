@@ -1,0 +1,55 @@
+### API de Productos Descontinuados - Tests
+### Archivo para probar los endpoints con REST Client (VS Code) o herramientas similares
+
+@baseUrl = http://localhost:5053/api/productos
+
+### Health Check
+GET {{baseUrl}}/health
+Accept: application/json
+
+###
+
+### Consultar producto existente
+GET {{baseUrl}}/consultar/7501234567890
+Accept: application/json
+
+###
+
+### Consultar producto inexistente
+GET {{baseUrl}}/consultar/0000000000000
+Accept: application/json
+
+###
+
+### Descontinuar producto
+POST {{baseUrl}}/descontinuar
+Content-Type: application/json
+
+{
+  "codigoBarras": "7501234567890"
+}
+
+###
+
+### Descontinuar con código vacío (error esperado)
+POST {{baseUrl}}/descontinuar
+Content-Type: application/json
+
+{
+  "codigoBarras": ""
+}
+
+###
+
+### Descontinuar producto inexistente (error esperado)
+POST {{baseUrl}}/descontinuar
+Content-Type: application/json
+
+{
+  "codigoBarras": "9999999999999"
+}
+
+###
+````````
+
+# Response
